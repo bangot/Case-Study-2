@@ -13,13 +13,13 @@ import java.util.List;
 public class StudentIo {
    private static final String Student_File_Name = "student.txt";
     public List<Student> read() {
-        List<Student> student = new ArrayList<>();
+        ArrayList<Student> student = new ArrayList<>();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
             fis = new FileInputStream(new File(Student_File_Name));
             ois = new ObjectInputStream(fis);
-            student = (List<Student>) ois.readObject();
+            student = (ArrayList<Student>) ois.readObject();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

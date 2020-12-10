@@ -4,15 +4,15 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String Tron = null;
+        String Chon = null;
         boolean exit = false;
         StudentManager studentManager = new StudentManager();
         int studentId;
 
         showMenu();
         while (true) {
-            Tron = scanner.nextLine();
-            switch (Tron) {
+            Chon = scanner.nextLine();
+            switch (Chon) {
                 case "1":
                     studentManager.add();
                     break;
