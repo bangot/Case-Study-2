@@ -19,10 +19,13 @@ public class StudentManager {
         byte age = inputAge();
         String address = inputAddress();
         float gpa = inputGpa();
+
         Student student = new Student(id, name, age, address, gpa);
         studentList.add(student);
         studentDao.write(studentList);
     }
+
+
 
     public void edit(int id) {
         boolean isExisted = false;
