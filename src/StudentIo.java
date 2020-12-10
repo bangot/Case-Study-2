@@ -8,11 +8,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 
 public class StudentIo {
    private static final String Student_File_Name = "student.txt";
-    public List<Student> read() {
+    public ArrayList<Student> read() {
         ArrayList<Student> student = new ArrayList<>();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
@@ -33,13 +33,13 @@ public class StudentIo {
         }
         return student;
     }
-   public void write(List<Student> studentList) {
+   public void write(ArrayList<Student> students) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
             fos = new FileOutputStream(new File(Student_File_Name));
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(studentList);
+            oos.writeObject(students);
         } catch (FileNotFoundException e) {
 
             e.printStackTrace();

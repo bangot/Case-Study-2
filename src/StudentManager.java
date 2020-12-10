@@ -7,16 +7,17 @@ import java.util.regex.Pattern;
 
 public class StudentManager {
     public static Scanner scanner = new Scanner(System.in);
-    private ArrayList<Student> studentList=new ArrayList<>();
+    private ArrayList<Student> students=new ArrayList<>();
     private StudentIo studentIo;
 
     public StudentManager() {
         studentIo = new StudentIo();
-        studentList = (ArrayList<Student>) studentIo.read();
+
+        students = (ArrayList<Student>) studentIo.read();
     }
 
     public void add() {
-        int id = (studentList.size() > 0) ? (studentList.size() + 1) : 1;
+        int id = (students.size() > 0) ? (students.size() + 1) : 1;
         System.out.println("student id = " + id);
         String name = inputName();
         byte age = inputAge();
@@ -24,60 +25,60 @@ public class StudentManager {
         float gpa = inputGpa();
 
         Student student = new Student(id, name, age, address, gpa);
-        studentList.add(student);
-        studentIo.write(studentList);
+        students.add(student);
+        studentIo.write(students);
     }
 
 
     public void edit(int id) {
         boolean isExisted = false;
-        int size = studentList.size();
+        int size = students.size();
         for (int i = 0; i < size; i++) {
-            if (studentList.get(i).getId() == id) {
+            if (students.get(i).getId() == id) {
                 isExisted = true;
-                studentList.get(i).setName(inputName());
-                studentList.get(i).setAge(inputAge());
-                studentList.get(i).setAddress(inputAddress());
-                studentList.get(i).setGpa(inputGpa());
+                students.get(i).setName(inputName());
+                students.get(i).setAge(inputAge());
+                students.get(i).setAddress(inputAddress());
+                students.get(i).setGpa(inputGpa());
                 break;
             }
         }
         if (!isExisted) {
             System.out.printf("id = %d not existed.\n", id);
         } else {
-            studentIo.write(studentList);
+            studentIo.write(students);
         }
     }
 
 
     public void delete(int id) {
         Student student = null;
-        int size = studentList.size();
+        int size = students.size();
         for (int i = 0; i < size; i++) {
-            if (studentList.get(i).getId() == id) {
-                student = studentList.get(i);
+            if (students.get(i).getId() == id) {
+                student = students.get(i);
                 break;
             }
         }
         if (student != null) {
-            studentList.remove(student);
-            studentIo.write(studentList);
+            students.remove(student);
+            studentIo.write(students);
         } else {
             System.out.printf("id = %d khong ton tai.\n", id);
         }
     }
 
     public void sortStudentByName() {
-        Collections.sort(studentList, new SortStudentByName());
+        Collections.sort(students, new SortStudentByName());
     }
 
 
     public void sortStudentByGPA() {
-        Collections.sort(studentList, new SortStudentMediumGPA());
+        Collections.sort(students, new SortStudentMediumGPA());
     }
 
     public void show() {
-        for (Student student : studentList) {
+        for (Student student : students) {
             System.out.format("%5d | ", student.getId());
             System.out.format("%20s | ", student.getName());
             System.out.format("%5d | ", student.getAge());
@@ -143,12 +144,12 @@ public class StudentManager {
     }
 
 
-    public List<Student> getStudentList() {
+    public ArrayList<Student> getStudents() {
 
-        return studentList;
+        return students;
     }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = (ArrayList<Student>) studentList;
+    public void setStudents(ArrayList<Student> student) {
+        this.students = (ArrayList<Student>) students;
     }
 }
