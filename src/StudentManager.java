@@ -7,12 +7,12 @@ import java.util.regex.Pattern;
 
 public class StudentManager {
     public static Scanner scanner = new Scanner(System.in);
-    private List<Student> studentList=new ArrayList<>();
+    private ArrayList<Student> studentList=new ArrayList<>();
     private StudentIo studentIo;
 
     public StudentManager() {
         studentIo = new StudentIo();
-        studentList = studentIo.read();
+        studentList = (ArrayList<Student>) studentIo.read();
     }
 
     public void add() {
@@ -149,6 +149,6 @@ public class StudentManager {
     }
 
     public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
+        this.studentList = (ArrayList<Student>) studentList;
     }
 }
