@@ -13,24 +13,25 @@ import java.util.List;
 public class StudentIo {
    private static final String Student_File_Name = "student.txt";
     public List<Student> read() {
-        List<Student> studentList = new ArrayList<>();
+        List<Student> student = new ArrayList<>();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
             fis = new FileInputStream(new File(Student_File_Name));
             ois = new ObjectInputStream(fis);
-            studentList = (List<Student>) ois.readObject();
+            student = (List<Student>) ois.readObject();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+
+
         } finally {
             closeStream(fis);
             closeStream(ois);
         }
-        return studentList;
+        return student;
     }
    public void write(List<Student> studentList) {
         FileOutputStream fos = null;
