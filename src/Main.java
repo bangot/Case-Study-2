@@ -4,15 +4,15 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String choose = null;
+        String Tron = null;
         boolean exit = false;
         StudentManager studentManager = new StudentManager();
         int studentId;
 
         showMenu();
         while (true) {
-            choose = scanner.nextLine();
-            switch (choose) {
+            Tron = scanner.nextLine();
+            switch (Tron) {
                 case "1":
                     studentManager.add();
                     break;
@@ -28,6 +28,7 @@ public class Main {
                     studentManager.sortStudentByGPA();
                     break;
                 case "5":
+
                     studentManager.sortStudentByName();
                     break;
                 case "6":
@@ -58,6 +59,6 @@ public class Main {
         System.out.println("6. Hien thi.");
         System.out.println("0. Thoat.");
         System.out.println("---------------------------");
-        System.out.print("Vui long tron: ");
+        System.out.print("Vui long chon: ");
     }
 }

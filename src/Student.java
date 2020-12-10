@@ -5,13 +5,7 @@ public class Student implements Serializable {
     private String name;
     private byte age;
     private String address;
-
-//     điểm trung bình của sinh viên
     private float gpa;
-
-//    public Student(int id, String name, byte age, String address, float gpa) {
-//    }
-
 
     public Student() {
     }
@@ -24,7 +18,6 @@ public class Student implements Serializable {
         this.address = address;
         this.gpa = gpa;
 
-;
     }
 
     public int getId() {
@@ -63,11 +56,18 @@ public class Student implements Serializable {
         return gpa;
     }
 
-    public void setGpa(float gpa)
-
-    {
+    public void setGpa(float gpa) {
         this.gpa = gpa;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", gpa=" + gpa +
+                '}';
+    }
 }

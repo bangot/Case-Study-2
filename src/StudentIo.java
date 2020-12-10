@@ -10,32 +10,14 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDao {
-   private static final String STUDENT_FILE_NAME = "student.txt";
-   public void write(List<Student> studentList) {
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        try {
-            fos = new FileOutputStream(new File(STUDENT_FILE_NAME));
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(studentList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            closeStream(fos);
-            closeStream(oos);
-        }
-    }
-
-
+public class StudentIo {
+   private static final String Student_File_Name = "student.txt";
     public List<Student> read() {
         List<Student> studentList = new ArrayList<>();
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
-            fis = new FileInputStream(new File(STUDENT_FILE_NAME));
+            fis = new FileInputStream(new File(Student_File_Name));
             ois = new ObjectInputStream(fis);
             studentList = (List<Student>) ois.readObject();
         } catch (FileNotFoundException e) {
@@ -50,6 +32,24 @@ public class StudentDao {
         }
         return studentList;
     }
+   public void write(List<Student> studentList) {
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(new File(Student_File_Name));
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(studentList);
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeStream(fos);
+            closeStream(oos);
+        }
+    }
+
 
     private void closeStream(InputStream is) {
         if (is != null) {

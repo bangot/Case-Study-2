@@ -1,15 +1,18 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentManager {
     public static Scanner scanner = new Scanner(System.in);
-    private List<Student> studentList;
-    private StudentDao studentDao;
+    private List<Student> studentList=new ArrayList<>();
+    private StudentIo studentIo;
 
     public StudentManager() {
-        studentDao = new StudentDao();
-        studentList = studentDao.read();
+        studentIo = new StudentIo();
+        studentList = studentIo.read();
     }
 
     public void add() {
@@ -22,9 +25,8 @@ public class StudentManager {
 
         Student student = new Student(id, name, age, address, gpa);
         studentList.add(student);
-        studentDao.write(studentList);
+        studentIo.write(studentList);
     }
-
 
 
     public void edit(int id) {
@@ -43,9 +45,10 @@ public class StudentManager {
         if (!isExisted) {
             System.out.printf("id = %d not existed.\n", id);
         } else {
-            studentDao.write(studentList);
+            studentIo.write(studentList);
         }
     }
+
 
     public void delete(int id) {
         Student student = null;
@@ -58,9 +61,9 @@ public class StudentManager {
         }
         if (student != null) {
             studentList.remove(student);
-            studentDao.write(studentList);
+            studentIo.write(studentList);
         } else {
-            System.out.printf("id = %d not existed.\n", id);
+            System.out.printf("id = %d khong ton tai.\n", id);
         }
     }
 
@@ -70,7 +73,7 @@ public class StudentManager {
 
 
     public void sortStudentByGPA() {
-        Collections.sort(studentList, new SortStudentByGPA());
+        Collections.sort(studentList, new SortStudentMediumGPA());
     }
 
     public void show() {
@@ -80,8 +83,10 @@ public class StudentManager {
             System.out.format("%5d | ", student.getAge());
             System.out.format("%20s | ", student.getAddress());
             System.out.format("%10.1f%n", student.getGpa());
+
         }
     }
+
 
     public int inputId() {
         System.out.print("Nhap id sinh vien ");
@@ -106,20 +111,20 @@ public class StudentManager {
         return scanner.nextLine();
     }
 
-private byte inputAge() {
-    System.out.print("Nhap tuoi: ");
-    while (true) {
-        try {
-            byte age = Byte.parseByte((scanner.nextLine()));
-            if (age < 0 || age > 100) {
-                throw new NumberFormatException();
+    private byte inputAge() {
+        System.out.print("Nhap tuoi: ");
+        while (true) {
+            try {
+                byte age = Byte.parseByte((scanner.nextLine()));
+                if (age < 0 || age > 100) {
+                    throw new NumberFormatException();
+                }
+                return age;
+            } catch (NumberFormatException ex) {
+                System.out.print("Tuoi khong hop le, nhap lai ");
             }
-            return age;
-        } catch (NumberFormatException ex) {
-            System.out.print("Tuoi khong hop le, nhap laai ");
         }
     }
-}
 
 
     private float inputGpa() {
@@ -136,6 +141,7 @@ private byte inputAge() {
             }
         }
     }
+
 
     public List<Student> getStudentList() {
 
