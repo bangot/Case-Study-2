@@ -44,7 +44,7 @@ public class StudentManager {
             }
         }
         if (!isExisted) {
-            System.out.printf("id = %d not existed.\n", id);
+            System.out.printf("id = %d khong ton tai.\n", id);
         } else {
             studentIo.write(students);
         }
