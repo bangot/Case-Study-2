@@ -50,7 +50,6 @@ public class StudentManager {
         }
     }
 
-
     public void delete(int id) {
         Student student = null;
         int size = students.size();
@@ -87,7 +86,6 @@ public class StudentManager {
 
         }
     }
-
 
     public int inputId() {
         System.out.print("Nhap id sinh vien ");

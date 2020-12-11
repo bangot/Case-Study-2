@@ -6,10 +6,8 @@ public class Student implements Serializable {
     private byte age;
     private String address;
     private float gpa;
-
     public Student() {
     }
-
     public Student(int id, String name, byte age, String address, float gpa) {
         super();
         this.id = id;
