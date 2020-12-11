@@ -35,7 +35,7 @@ public class Main {
                     studentManager.show();
                     break;
                 case "0":
-                    System.out.println("exited!");
+                    System.out.println("Ket thuc!");
                     exit = true;
                     break;
                 default:

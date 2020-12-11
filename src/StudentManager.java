@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class StudentManager {
     public static Scanner scanner = new Scanner(System.in);
-    private ArrayList<Student> students=new ArrayList<>();
+    private ArrayList<Student> students = new ArrayList<>();
     private StudentIo studentIo;
 
     public StudentManager() {

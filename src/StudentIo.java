@@ -8,10 +8,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-//import java.util.List;
 
 public class StudentIo {
-   private static final String Student_File_Name = "student.txt";
+    private static final String Student_File_Name = "student.txt";
+
     public ArrayList<Student> read() {
         ArrayList<Student> student = new ArrayList<>();
         FileInputStream fis = null;
@@ -33,7 +33,8 @@ public class StudentIo {
         }
         return student;
     }
-   public void write(ArrayList<Student> students) {
+
+    public void write(ArrayList<Student> students) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
